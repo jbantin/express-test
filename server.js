@@ -1,5 +1,5 @@
 import express from "express";
-import fs from "fs";
+import fs from "fs/promises";
 
 const app = express();
 app.use(express.json());
@@ -19,7 +19,7 @@ app.listen(PORT, () => {
 });
 async function writeString(string) {
   try {
-    await fs.promises.writeFile("./test-write.txt", string);
+    await fs.writeFile("./test-write.txt", string);
   } catch (error) {
     console.error("Error writing", error);
   }
